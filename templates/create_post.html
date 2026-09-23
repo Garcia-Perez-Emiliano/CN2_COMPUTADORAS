@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="columns is-centered">
+    <div class="column is-6">
+        <div class="card p-5" style="border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+            <h2 class="title is-3 mb-4">Agregar Noticia</h2>
+            <form action="{{ url_for('add_post') }}" method="post">
+                <div class="field">
+                    <label class="label">Título</label>
+                    <div class="control">
+                        <input class="input" type="text" name="title" placeholder="Título de la noticia" required>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Categoría</label>
+                    <div class="control select is-fullwidth">
+                        <select name="category_id" required>
+                            {% for cat in categories %}
+                            <option value="{{ cat.id }}">{{ cat.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Contenido</label>
+                    <div class="control">
+                        <textarea class="textarea" name="content" rows="6" placeholder="Escribe el contenido aquí..." required></textarea>
+                    </div>
+                </div>
+
+                <div class="buttons mt-5">
+                    <button class="button is-primary" type="submit">Guardar</button>
+                    <a class="button is-light" href="{{ url_for('index') }}">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
