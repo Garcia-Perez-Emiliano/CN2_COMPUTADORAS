@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %}Agregar Computadora{% endblock %}
+
+{% block content %}
+
+<div class="columns is-centered">
+    <div class="column is-half">
+
+        <div class="card">
+            <div class="card-content">
+
+                <p class="title is-4">Agregar computadora</p>
+
+                <form action="{{ url_for('create_computadora') }}" method="POST">
+
+                    <div class="field">
+                        <label class="label">Marca:</label>
+                        <div class="control">
+                            <input class="input" type="text"
+                                   name="marca" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Modelo:</label>
+                        <div class="control">
+                            <input class="input" type="text"
+                                   name="modelo" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Procesador:</label>
+                        <div class="control">
+                            <input class="input" type="text"
+                                   name="procesador" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">RAM:</label>
+                        <div class="control">
+                            <input class="input" type="text"
+                                   name="ram" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Almacenamiento:</label>
+                        <div class="control">
+                            <input class="input" type="text"
+                                   name="almacenamiento" required>
+                        </div>
+                    </div>
+
+                    <div class="field is-grouped">
+
+                        <div class="control">
+                            <button type="submit" class="button is-primary">
+                                Guardar
+                            </button>
+                        </div>
+
+                        <div class="control">
+                            <a href="{{ url_for('index') }}"
+                               class="button is-danger">
+                                Cancelar
+                            </a>
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
+from flask import Flask, request, render_template, redirect, url_for
 
 # Cargar las variables de entorno
 load_dotenv()
@@ -37,6 +38,35 @@ def index():
         'index.html',
         computadoras=computadoras
     )
+
+@app.route('/computadoras/new', methods=['GET', 'POST'])
+def create_computadora():
+    if request.method == 'POST':
+        # Obtener datos del formulario
+        marca = request.form['marca']
+        modelo = request.form['modelo']
+        procesador = request.form['procesador']
+        ram = request.form['ram']
+        almacenamiento = request.form['almacenamiento']
+
+        # Crear nueva computadora
+        nueva_computadora = InventarioComputadora(
+            marca=marca,
+            modelo=modelo,
+            procesador=procesador,
+            ram=ram,
+            almacenamiento=almacenamiento
+        )
+
+        # Guardar en la base de datos
+        db.session.add(nueva_computadora)
+        db.session.commit()
+
+        # Regresar al inventario
+        return redirect(url_for('index'))
+
+    # Si es GET, mostrar formulario
+    return render_template('create_computadora.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
