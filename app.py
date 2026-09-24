@@ -38,5 +38,17 @@ def index():
         computadoras=computadoras
     )
 
+@app.route('/eliminar/<int:id>', methods=['POST'])
+def eliminar(id):
+    # Buscar el registro por su ID
+    computadora = InventarioComputadora.query.get_or_404(id)
+    
+    # Eliminar el registro de la base de datos
+    db.session.delete(computadora)
+    db.session.commit()
+    
+    # Redirigir a la función index que carga el inventario
+    return redirect(url_for('index'))
+
 if __name__ == '__main__':
     app.run(debug=True)

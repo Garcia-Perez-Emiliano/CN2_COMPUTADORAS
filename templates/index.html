@@ -14,9 +14,9 @@
             <th>Procesador</th>
             <th>RAM</th>
             <th>Almacenamiento</th>
+            <th>Acciones</th> 
         </tr>
     </thead>
-
     <tbody>
         {% for computadora in computadoras %}
         <tr>
@@ -26,8 +26,15 @@
             <td>{{ computadora.procesador }}</td>
             <td>{{ computadora.ram }}</td>
             <td>{{ computadora.almacenamiento }}</td>
+            <td>
+                <form action="{{ url_for('eliminar', id=computadora.id) }}" method="POST">
+                    <button type="submit" class="button is-danger is-small" onclick="return confirm('¿Estás seguro de que deseas eliminar este registro?');">
+                        Eliminar
+                    </button>
+                </form>
+            </td>
         </tr>
-        {% endfor %}
-    </tbody>
-</table>
-{% endblock %}
+{% endfor %} 
+        </tbody>
+    </table>
+    {% endblock %} 
