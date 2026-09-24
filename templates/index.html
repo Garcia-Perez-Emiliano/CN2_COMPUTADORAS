@@ -1,46 +1,33 @@
 {% extends 'base.html' %}
+{% block title %}Inventario de Computadoras{% endblock %}
 
 {% block content %}
-<div class="columns is-centered">
-    <div class="column is-10">
-        <a href="{{ url_for('add_computer') }}" class="button is-primary is-medium mb-5">
-            <i class="fa-solid fa-plus mr-2"></i> Registrar Computadora
-        </a>
 
-        <div class="box" style="border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
-            <table class="table is-fullwidth is-striped is-hoverable">
-                <thead>
-                    <tr>
-                        <th>Marca</th>
-                        <th>Modelo</th>
-                        <th>Procesador</th>
-                        <th>RAM</th>
-                        <th>Almacenamiento</th>
-                        <th class="has-text-centered">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for pc in computers %}
-                    <tr>
-                        <td><span class="tag is-info">{{ pc.brand.name if pc.brand else 'Genérica' }}</span></td>
-                        <td><strong>{{ pc.model }}</strong></td>
-                        <td>{{ pc.processor }}</td>
-                        <td>{{ pc.ram }}</td>
-                        <td>{{ pc.storage }}</td>
-                        <td class="has-text-centered">
-                            <a href="{{ url_for('edit_computer', id=pc.id) }}" class="button is-small is-warning">
-                                <i class="fa-solid fa-pen mr-1"></i> Editar
-                            </a>
-                        </td>
-                    </tr>
-                    {% else %}
-                    <tr>
-                        <td colspan="6" class="has-text-centered">No hay equipos registrados en el inventario.</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
+<h2 class="title is-4">Inventario de Computadoras</h2>
+
+<table class="table is-bordered is-striped is-fullwidth">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Procesador</th>
+            <th>RAM</th>
+            <th>Almacenamiento</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for computadora in computadoras %}
+        <tr>
+            <td>{{ computadora.id }}</td>
+            <td>{{ computadora.marca }}</td>
+            <td>{{ computadora.modelo }}</td>
+            <td>{{ computadora.procesador }}</td>
+            <td>{{ computadora.ram }}</td>
+            <td>{{ computadora.almacenamiento }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}
