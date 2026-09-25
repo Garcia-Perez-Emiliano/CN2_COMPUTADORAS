@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block title %}Actualizar Computadora{% endblock %}
+
+{% block content %}
+
+<h2 class="title is-4">Actualizar Computadora</h2>
+
+<form method="POST">
+
+    <div class="field">
+        <label class="label">Marca</label>
+        <div class="control">
+            <input
+                class="input"
+                type="text"
+                name="marca"
+                value="{{ computadora.marca }}"
+                required>
+        </div>
+    </div>
+
+
+    <div class="field">
+        <label class="label">Modelo</label>
+        <div class="control">
+            <input
+                class="input"
+                type="text"
+                name="modelo"
+                value="{{ computadora.modelo }}"
+                required>
+        </div>
+    </div>
+
+
+    <div class="field">
+        <label class="label">Procesador</label>
+        <div class="control">
+            <input
+                class="input"
+                type="text"
+                name="procesador"
+                value="{{ computadora.procesador }}"
+                required>
+        </div>
+    </div>
+
+
+    <div class="field">
+        <label class="label">RAM</label>
+        <div class="control">
+            <input
+                class="input"
+                type="text"
+                name="ram"
+                value="{{ computadora.ram }}"
+                required>
+        </div>
+    </div>
+
+
+    <div class="field">
+        <label class="label">Almacenamiento</label>
+        <div class="control">
+            <input
+                class="input"
+                type="text"
+                name="almacenamiento"
+                value="{{ computadora.almacenamiento }}"
+                required>
+        </div>
+    </div>
+
+
+    <div class="field">
+
+        <div class="control">
+
+            <button type="submit" class="button is-success">
+                Guardar cambios
+            </button>
+
+            <a href="{{ url_for('index') }}" class="button is-light">
+                Cancelar
+            </a>
+
+        </div>
+
+    </div>
+
+</form>
+
+{% endblock %}

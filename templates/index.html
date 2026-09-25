@@ -32,10 +32,21 @@
             <td>{{ computadora.ram }}</td>
             <td>{{ computadora.almacenamiento }}</td>
             <td>
-                <form action="{{ url_for('eliminar', id=computadora.id) }}" method="POST">
-                    <button type="submit" class="button is-danger is-small" onclick="return confirm('¿Estás seguro de que deseas eliminar este registro?');">
+                <a href="{{ url_for('update_computadora', id=computadora.id) }}"
+                class="button is-warning is-small">
+                    Actualizar
+                </a>
+
+                <form action="{{ url_for('eliminar', id=computadora.id) }}"
+                    method="POST"
+                    style="display:inline;">
+
+                    <button type="submit"
+                            class="button is-danger is-small"
+                            onclick="return confirm('¿Estás seguro de que deseas eliminar este registro?');">
                         Eliminar
                     </button>
+
                 </form>
             </td>
         </tr>
