@@ -79,5 +79,30 @@ def create_computadora():
     # Si es GET, mostrar formulario
     return render_template('create_computadora.html')
 
+@app.route('/computadoras/update/<int:id>', methods=['GET', 'POST'])
+def update_computadora(id):
+    # Buscar la computadora por su ID
+    computadora = InventarioComputadora.query.get_or_404(id)
+
+    if request.method == 'POST':
+        # Actualizar los datos
+        computadora.marca = request.form['marca']
+        computadora.modelo = request.form['modelo']
+        computadora.procesador = request.form['procesador']
+        computadora.ram = request.form['ram']
+        computadora.almacenamiento = request.form['almacenamiento']
+
+        # Guardar los cambios
+        db.session.commit()
+
+        # Regresar al inventario
+        return redirect(url_for('index'))
+
+    # Mostrar el formulario con los datos actuales
+    return render_template(
+        'update_computadora.html',
+        computadora=computadora
+    )
+    
 if __name__ == '__main__':
     app.run(debug=True)
