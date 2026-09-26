@@ -3,36 +3,35 @@
 
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
     <title>{% block title %}{% endblock %}</title>
+    <style>
+        .custom-navbar {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .custom-title {
+            color: #ffffff !important;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+    </style>
 </head>
 
 <body>
 
-    <section class="section">
-
-        <div class="container">
-
-            <h1 class="title has-text-centered">
-                Inventario de Computadoras
+    <header class="custom-navbar py-4 mb-5">
+        <div class="container has-text-centered">
+            <h1 class="title custom-title mb-0">
+                💻 Inventario de Computadoras
             </h1>
-
-            <hr>
-
-            <div class="container is-max-desktop">
-
-                {% block content %}{% endblock %}
-
-            </div>
-
         </div>
+    </header>
 
-    </section>
+    <main class="container is-max-desktop px-4">
+        {% block content %}{% endblock %}
+    </main>
 
 </body>
 
