@@ -4,91 +4,135 @@
 
 {% block content %}
 
-<h2 class="title is-4">Actualizar Computadora</h2>
+<div class="columns is-centered">
+    <div class="column is-8-desktop is-10-tablet">
 
-<form method="POST">
+        <div class="box">
 
-    <div class="field">
-        <label class="label">Marca</label>
-        <div class="control">
-            <input
-                class="input"
-                type="text"
-                name="marca"
-                value="{{ computadora.marca }}"
-                required>
+            <div class="has-text-centered mb-5">
+                <h2 class="title is-3 has-text-link">
+                    Actualizar Computadora
+                </h2>
+
+                <p class="subtitle is-6 has-text-grey">
+                    Modifica los datos de la computadora
+                </p>
+            </div>
+
+            <form method="POST">
+
+                <div class="columns is-multiline">
+
+                    <div class="column is-half">
+                        <div class="field">
+                            <label class="label">Marca</label>
+
+                            <div class="control">
+                                <input
+                                    class="input is-medium"
+                                    type="text"
+                                    name="marca"
+                                    value="{{ computadora.marca }}"
+                                    placeholder="Ej. HP"
+                                    required>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="column is-half">
+                        <div class="field">
+                            <label class="label">Modelo</label>
+
+                            <div class="control">
+                                <input
+                                    class="input is-medium"
+                                    type="text"
+                                    name="modelo"
+                                    value="{{ computadora.modelo }}"
+                                    placeholder="Ej. Pavilion 15"
+                                    required>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="column is-full">
+                        <div class="field">
+                            <label class="label">Procesador</label>
+
+                            <div class="control">
+                                <input
+                                    class="input is-medium"
+                                    type="text"
+                                    name="procesador"
+                                    value="{{ computadora.procesador }}"
+                                    placeholder="Ej. Intel Core i5"
+                                    required>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="column is-half">
+                        <div class="field">
+                            <label class="label">RAM</label>
+
+                            <div class="control">
+                                <input
+                                    class="input is-medium"
+                                    type="text"
+                                    name="ram"
+                                    value="{{ computadora.ram }}"
+                                    placeholder="Ej. 16 GB"
+                                    required>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="column is-half">
+                        <div class="field">
+                            <label class="label">Almacenamiento</label>
+
+                            <div class="control">
+                                <input
+                                    class="input is-medium"
+                                    type="text"
+                                    name="almacenamiento"
+                                    value="{{ computadora.almacenamiento }}"
+                                    placeholder="Ej. 512 GB SSD"
+                                    required>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="field mt-5">
+                    <div class="buttons is-justify-content-flex-end">
+
+                        <a
+                            href="{{ url_for('index') }}"
+                            class="button is-light is-medium">
+                            Cancelar
+                        </a>
+
+                        <button
+                            type="submit"
+                            class="button is-link is-medium">
+                            Guardar cambios
+                        </button>
+
+                    </div>
+                </div>
+
+            </form>
+
         </div>
-    </div>
-
-
-    <div class="field">
-        <label class="label">Modelo</label>
-        <div class="control">
-            <input
-                class="input"
-                type="text"
-                name="modelo"
-                value="{{ computadora.modelo }}"
-                required>
-        </div>
-    </div>
-
-
-    <div class="field">
-        <label class="label">Procesador</label>
-        <div class="control">
-            <input
-                class="input"
-                type="text"
-                name="procesador"
-                value="{{ computadora.procesador }}"
-                required>
-        </div>
-    </div>
-
-
-    <div class="field">
-        <label class="label">RAM</label>
-        <div class="control">
-            <input
-                class="input"
-                type="text"
-                name="ram"
-                value="{{ computadora.ram }}"
-                required>
-        </div>
-    </div>
-
-
-    <div class="field">
-        <label class="label">Almacenamiento</label>
-        <div class="control">
-            <input
-                class="input"
-                type="text"
-                name="almacenamiento"
-                value="{{ computadora.almacenamiento }}"
-                required>
-        </div>
-    </div>
-
-
-    <div class="field">
-
-        <div class="control">
-
-            <button type="submit" class="button is-success">
-                Guardar cambios
-            </button>
-
-            <a href="{{ url_for('index') }}" class="button is-light">
-                Cancelar
-            </a>
-
-        </div>
 
     </div>
-
-</form>
+</div>
 
 {% endblock %}
